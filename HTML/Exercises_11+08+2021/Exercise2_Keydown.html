@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <title>Exercise 2</title>
+</head>
+<body>
+    
+    <!--<form>-->
+    <!--<input type="text" maxlength="140" id="textboxcounter" name="textbox" onkeydown="textBoxCounter()" style="height: 120px; width:200 px;">-->
+    <textarea  maxlength="140" id="textboxcounter" name="textbox" onkeydown="textBoxCounter()" style="height: 120px; width:200 px;"></textarea>
+    <!--</form>-->
+
+    <h1 id="counter"></h1>
+
+    <script>
+        var counter = 140;
+        console.log(counter)
+        document.getElementById('counter').innerHTML = counter;
+
+        function textBoxCounter() {
+            if (counter > 0) {
+                counter = counter - 1;
+                document.getElementById('counter').innerHTML = counter;
+                console.log(counter)
+            }
+        }
+    </script>
+
+    <!--
+        References
+
+            https://tutorial.eyehunts.com/html/html-input-text-box-field-value-size-width-multiline-example/
+    -->
+
+
+</body>
+</html>
