@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 id="result"></h1>
+    <button onclick="getData()">Save Data</button>
+
+    <table id="resultTable" border="1" style="border-collapse :collapse;">
+        
+    </table>
+
+    
+    <script>
+            // AJAX Call
+            function getData(){
+                // create XMLHttpRequest object
+                var request = new XMLHttpRequest();
+
+                // instantiate the request object
+                // open(method_type, url, async)
+                request.open('GET', 'http://jsonplaceholder.typicode.com/posts', true)
+
+                // defining event listener for readyStateChnage event
+                request.onreadystatechange = function(){
+
+                    // check if the request is completed and was successfull
+                    if(this.readyState == 4 && this.status == 200){
+
+                        // inserting the response from the server into the html element
+                        var json = this.responseText;
+                        var data = JSON.parse(json);
+                        for (let i=0 ; data.length ; i++) {
+                            var row = `<tr>
+                                        <td>${data[i]["userId"]}</td>
+                                        <td>${data[i]["id"]}</td>
+                                        <td>${data[i]["title"]}</td>
+                                        <td>${data[i]["body"]}</td>
+                                    </tr>`;
+                            document.getElementById('resultTable').innerHTML += row;
+                        }
+                    }
+                }
+
+                // sending the request to the server
+                request.send()
+            }
+    </script>
+
+
+</body>
+</html>
